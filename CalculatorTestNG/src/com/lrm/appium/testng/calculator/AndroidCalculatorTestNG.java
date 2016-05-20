@@ -27,7 +27,7 @@ import org.testng.annotations.Test;
 public class AndroidCalculatorTestNG {
     private AppiumDriver<AndroidElement> driver;
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void setUp() throws Exception {
         // set up appium
         File classpathRoot = new File(System.getProperty("user.dir"));
@@ -44,21 +44,14 @@ public class AndroidCalculatorTestNG {
         driver = new AndroidDriver<>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
     }
 
-    @AfterMethod
+    @AfterMethod(alwaysRun = true)
     public void tearDown() throws Exception {
         driver.quit();
     }
 
     
-    @Test
+    @Test(groups = {"funcAdd"}, invocationCount = 3)
     public void add(){
-//    	WebElement el = driver.findElement(By.xpath(".//*[@text='Add Contact']"));
-//        el.click();
-//        List<AndroidElement> textFieldsList = driver.findElementsByClassName("android.widget.EditText");
-//        textFieldsList.get(0).sendKeys("Some Name");
-//        textFieldsList.get(2).sendKeys("Some@example.com");
-//        driver.swipe(100, 500, 100, 100, 2);
-//        driver.findElementByXPath(".//*[@text='Save']").click();
         
     	WebElement num1 = driver.findElementById("digit_1");
     	num1.click();
@@ -94,7 +87,7 @@ public class AndroidCalculatorTestNG {
     	System.out.println("after Assert.assertEquals");
     }
 
-    @Test
+    @Test(groups = {"funcSub"})
     public void sub(){
     	WebElement num1 = driver.findElementById("digit_1");
     	num1.click();
@@ -105,12 +98,6 @@ public class AndroidCalculatorTestNG {
     	WebElement eq = driver.findElementById("eq");
     	eq.click();
     }
-
-//    @Test
-//    public void screenShot()
-//    {
-//    	snapshot((TakesScreenshot) driver, "calculator.png");
-//    }
     
     /** 
      * This Method create for take screenshot 
@@ -122,13 +109,13 @@ public class AndroidCalculatorTestNG {
         // this method will take screen shot ,require two parameters ,one is 
         // driver name, another is file name 
   
-        String currentPath = System.getProperty("user.dir"); // get current work 
-                                                                // folder 
+    	// get current work folder 
+        String currentPath = System.getProperty("user.dir"); 
         File scrFile = drivername.getScreenshotAs(OutputType.FILE); 
         // Now you can do whatever you need to do with it, for example copy 
         // somewhere 
         try { 
-            System.out.println("save snapshot path is:" + currentPath + "/"
+            System.out.println("save snapshot path is:" + currentPath + "\\"
                     + filename); 
             FileUtils 
                     .copyFile(scrFile, new File(currentPath + "\\" + filename)); 

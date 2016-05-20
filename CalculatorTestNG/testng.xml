@@ -1,9 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Suite">
-  <test name="Test">
-    <classes>
-      <class name="com.lrm.appium.testng.calculator.AndroidCalculatorTestNG"/>
-    </classes>
-  </test> <!-- Test -->
+	<test name="Test">
+	    <groups>
+	        <define name="group-add">
+	            <include name="funcAdd"></include>
+	        </define>
+	        <run>
+	            <include name="group-add"></include>
+	            <exclude name="funcSub"></exclude>
+	        </run>
+	    </groups>
+	    <classes>
+            <class name="com.lrm.appium.testng.calculator.AndroidCalculatorTestNG">
+            </class>
+        </classes>
+		<!-- <classes>
+			<class name="com.lrm.appium.testng.calculator.AndroidCalculatorTestNG">
+			    <methods>
+			        <include name="add"></include>
+			        <exclude name="sub"></exclude>
+			    </methods>
+			</class>
+		</classes> -->
+	</test> <!-- Test -->
 </suite> <!-- Suite -->
