@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Suite">
+    <listeners>  
+        <listener class-name="org.uncommons.reportng.HTMLReporter" />  
+        <listener class-name="org.uncommons.reportng.JUnitXMLReporter" />  
+    </listeners>  
 	<test name="Test">
-	    <groups>
+	    <!-- <groups>
 	        <define name="group-add">
 	            <include name="funcAdd"></include>
 	        </define>
@@ -10,18 +14,14 @@
 	            <include name="group-add"></include>
 	            <exclude name="funcSub"></exclude>
 	        </run>
-	    </groups>
+	    </groups> -->
 	    <classes>
             <class name="com.lrm.appium.testng.calculator.AndroidCalculatorTestNG">
+                <!-- <methods>
+                    <include name="add"></include>
+                    <exclude name="sub"></exclude>
+                </methods> -->
             </class>
         </classes>
-		<!-- <classes>
-			<class name="com.lrm.appium.testng.calculator.AndroidCalculatorTestNG">
-			    <methods>
-			        <include name="add"></include>
-			        <exclude name="sub"></exclude>
-			    </methods>
-			</class>
-		</classes> -->
 	</test> <!-- Test -->
 </suite> <!-- Suite -->

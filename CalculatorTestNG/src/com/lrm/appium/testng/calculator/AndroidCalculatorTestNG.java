@@ -50,7 +50,7 @@ public class AndroidCalculatorTestNG {
     }
 
     
-    @Test(groups = {"funcAdd"}, invocationCount = 3)
+    @Test(groups = {"funcAdd"}, invocationCount = 1)
     public void add(){
         
     	WebElement num1 = driver.findElementById("digit_1");
